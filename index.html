@@ -1,0 +1,241 @@
+<html>
+  <head>
+    <title>MonstrX</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200,900');
+        button {
+            font-family: "Source Code Pro";
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 30px;  
+            color: var(--text-color);
+        }
+        .glow-on-hover {
+            width: 220px;
+            height: 50px;
+            border: none;
+            outline: none;
+            color: #fff;
+            background: #111;
+            cursor: pointer;
+            position: relative;
+            z-index: 0;
+            border-radius: 10px;
+        }
+
+        .glow-on-hover:before {
+            content: '';
+            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            position: absolute;
+            top: -2px;
+            left:-2px;
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(5px);
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            animation: glowing 20s linear infinite;
+            opacity: 0;
+            transition: opacity .3s ease-in-out;
+            border-radius: 10px;
+        }
+
+        .glow-on-hover:active {
+            color: #000
+        }
+
+        .glow-on-hover:active:after {
+            background: transparent;
+        }
+
+        .glow-on-hover:hover:before {
+            opacity: 1;
+        }
+
+        .glow-on-hover:after {
+            z-index: -1;
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #111;
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+        }
+
+        @keyframes glowing {
+            0% { background-position: 0 0; }
+            50% { background-position: 400% 0; }
+            100% { background-position: 0 0; }
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        #container {
+            text-align: center;
+        }
+        select {
+    display: none;
+    }
+        body {
+      /* background-image: url(./assets/banner33.png); */
+      background-size: cover;
+      background-color: rgb(21, 21, 20) ;
+    }
+      #canvas {
+        /* border: 1px solid black; */
+      }
+      #canvas1, #canvas2, #canvas3, #canvas4, #canvas5, #canvas6 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid black;
+      }
+
+      #canvas7 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid black;
+        display: block;
+      }
+
+      h1 {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 50;
+        text-align: center;
+        color: aliceblue;
+      }
+
+  </style>
+  </head>
+  <br><br><br>
+  <h1>MonstrX PFP Generator</h1>
+  <body>
+    <label for="image-select3"></label>
+    <select id="image-select3">
+      <option value="./assets/BACKGROUND/1.png">Green</option>
+    </select>
+    <br><br>
+    <label for="image-select1"></label>
+    <select id="image-select1">
+      <option value="./assets/traits/skin/devil.png">Devil</option>
+    </select>
+    <br><br>
+    <label for="image-select2"></label>
+    <select id="image-select2">
+      <option value="./assets/traits/body/astronaut.png">Astronaut</option>
+      <option value="">None</option>    
+    </select>
+    <br><br>
+    <label for="image-select5"></label>
+    <select id="image-select5">
+      <option value="">None</option>
+      <option value="./assets/traits/glasses/blackshade.png">Black Shade</option>
+    </select>
+    <br><br>
+    <label for="image-select4"></label>
+    <select id="image-select4">
+      <option value="./assets/traits/head/none.png">None</option>
+    </select>
+    <br><br>
+    <label for="image-select6"></label>
+    <select id="image-select6">
+      <option value="">None</option>    
+    </select>
+    <br><br>
+    <div id="container">
+    <canvas id="canvas1" width="400" height="400"></canvas>
+    <button class="glow-on-hover" type="button" id="randomize">Generate</button>
+    </div>
+    <script>
+      var canvas1 = document.getElementById("canvas1");
+      var ctx1 = canvas1.getContext("2d");
+
+      var select3 = document.getElementById("image-select3");
+      var select1 = document.getElementById("image-select1");
+      var select2 = document.getElementById("image-select2");
+      var select5 = document.getElementById("image-select5");
+      var select4 = document.getElementById("image-select4");
+      var select6 = document.getElementById("image-select6");
+      var image = new Image();
+
+
+      function drawImage(canvas, ctx, src) {
+     var image = new Image();
+      image.src = src;
+      image.onload = function() {
+      ctx.drawImage(image, 0, 0, 400, 400);
+    };
+  }
+
+  select3.addEventListener("change", function() {
+    var src = this.value;
+    ctx1.clearRect(0, 0, 400, 400);
+    drawImage(canvas1, ctx1, src);
+  });
+  select1.addEventListener("change", function() {
+    var src = this.value;
+    ctx1.clearRect(0, 0, 400, 400);
+    drawImage(canvas1, ctx1, src);
+  });
+  select2.addEventListener("change", function() {
+    var src = this.value;
+    ctx1.clearRect(0, 0, 400, 400);
+    drawImage(canvas1, ctx1, src);
+  });
+  select5.addEventListener("change", function() {
+    var src = this.value;
+    ctx1.clearRect(0, 0, 400, 400);
+    drawImage(canvas1, ctx1, src);
+  });
+  select4.addEventListener("change", function() {
+    var src = this.value;
+    ctx1.clearRect(0, 0, 400, 400);
+    drawImage(canvas1, ctx1, src);
+  });
+  select6.addEventListener("change", function() {
+    var src = this.value;
+    ctx1.clearRect(0, 0, 400, 400);
+    drawImage(canvas1, ctx1, src);
+  });
+
+
+  drawImage(canvas1, ctx1, select3.value);
+  drawImage(canvas1, ctx1, select1.value);
+  drawImage(canvas1, ctx1, select2.value);
+  drawImage(canvas1, ctx1, select5.value);
+  drawImage(canvas1, ctx1, select4.value);
+  drawImage(canvas1, ctx1, select6.value);
+
+
+  function randomizeSelect(select) {
+  var options = select.options;
+  var randomIndex = Math.floor(Math.random() * options.length);
+  select.selectedIndex = randomIndex;
+  select.dispatchEvent(new Event("change"));
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  var select3 = document.getElementById("image-select3");
+  var select1 = document.getElementById("image-select1");
+  var select2 = document.getElementById("image-select2");
+  var select5 = document.getElementById("image-select5");
+  var select4 = document.getElementById("image-select4");
+  var select6 = document.getElementById("image-select6");
+ 
+
+  document.getElementById("randomize").addEventListener("click", function() {
+    randomizeSelect(select3);
+    randomizeSelect(select1);
+    randomizeSelect(select2);
+    randomizeSelect(select5);
+    randomizeSelect(select4);
+    randomizeSelect(select6);
+    document.getElementById("randomize").style.display = "none"
+  });
+});
+</script>
+  </body>
+</html>
