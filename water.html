@@ -130,6 +130,7 @@
     <label for="image-select1"></label>
     <select id="image-select1">
       <option value="">Devil</option>
+      <option value="">Devil</option>
     </select>
     <br><br>
     <label for="image-select2"></label>
@@ -142,16 +143,15 @@
     <br><br>
     <label for="image-select5"></label>
     <select id="image-select5">
-      <option value="./assets/water/WATER.png">Black Shade</option>
-
+      <option value="">Black Shade</option>
     </select>
     <br><br>
     <label for="image-select4"></label>
     <select id="image-select4">
-      <option value="./assets/water/bowl1.png">BOWL</option>
-      <option value="./assets/water/bowl2.png">BOWL</option>
-      <option value="./assets/water/bowl3.png">BOWL</option>
-      <option value="./assets/water/bowl4.png">BOWL</option>
+      <option value="./assets/water/BOWL/bowl1.png">BOWL</option>
+      <option value="./assets/water/BOWL/bowl2.png">BOWL</option>
+      <option value="./assets/water/BOWL/bowl3.png">BOWL</option>
+      <option value="./assets/water/BOWL/bowl4.png">BOWL</option>
     </select>
     <br><br>
     <label for="image-select6"></label>
@@ -168,7 +168,6 @@
       <option value="./assets/water/FACE/face2.png">face</option>
       <option value="./assets/water/FACE/face3.png">face</option>
       <option value="./assets/water/FACE/face4.png">face</option>
-
     </select>
     <br><br>
     <div id="container">
@@ -249,7 +248,6 @@
         });
 
   function randomizeSelect(select) {
-  ctx1.clearRect(0, 0, 400, 400);
   var options = select.options;
   var randomIndex = Math.floor(Math.random() * options.length);
   select.selectedIndex = randomIndex;
@@ -266,6 +264,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var select7 = document.getElementById("image-select7");
 
   document.getElementById("randomize").addEventListener("click", function() {
+    ctx1.clearRect(0, 0, 400, 400);
     randomizeSelect(select3);
     randomizeSelect(select1);
     randomizeSelect(select2);
