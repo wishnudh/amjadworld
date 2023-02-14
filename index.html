@@ -90,6 +90,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
         border: 1px solid black;
+        display: none;
       }
 
       #canvas7 {
@@ -115,34 +116,60 @@
   <body>
     <label for="image-select3"></label>
     <select id="image-select3">
-      <option value="./assets/BACKGROUND/1.png">Green</option>
+      <option value="./assets/fire/bg/1.png">Green</option>
+      <option value="./assets/fire/bg/2.png">Green</option>
+      <option value="./assets/fire/bg/3.png">Green</option>
+      <option value="./assets/fire/bg/4.png">Green</option>
+      <option value="./assets/fire/bg/5.png">Green</option>
+      <option value="./assets/fire/bg/6.png">Green</option>
+      <option value="./assets/fire/bg/rare1.png">Green</option>
+      <option value="./assets/fire/bg/rare2.png">Green</option>
+      <option value="./assets/fire/bg/rare3.png">Green</option>
     </select>
     <br><br>
     <label for="image-select1"></label>
     <select id="image-select1">
-      <option value="./assets/traits/skin/devil.png">Devil</option>
+      <option value="./assets/fire/bp/backpack1.png">Devil</option>
+      <option value="./assets/fire/bp/backpack2.png">Devil</option>
+      <option value="./assets/fire/bp/backpack3.png">Devil</option>
+      <option value="">Devil</option>
     </select>
     <br><br>
     <label for="image-select2"></label>
     <select id="image-select2">
-      <option value="./assets/traits/body/astronaut.png">Astronaut</option>
-      <option value="">None</option>    
+      <option value="./assets/fire/body/body1.png">Devil</option>
+      <option value="./assets/fire/body/body2.png">Devil</option>
+      <option value="./assets/fire/body/body3.png">Devil</option>
+      <option value="./assets/fire/body/body4.png">Devil</option>
     </select>
     <br><br>
     <label for="image-select5"></label>
     <select id="image-select5">
-      <option value="">None</option>
-      <option value="./assets/traits/glasses/blackshade.png">Black Shade</option>
+      <option value="./assets/fire/BASE.png">Black Shade</option>
+      <option value="./assets/fire/BASE.png">Black Shade</option>
+      <option value="./assets/fire/BASE.png">Black Shade</option>
+      <option value="./assets/fire/BASE.png">Black Shade</option>
+
     </select>
     <br><br>
     <label for="image-select4"></label>
     <select id="image-select4">
-      <option value="./assets/traits/head/none.png">None</option>
+      <option value="./assets/fire/eyes/eyes1.png">None</option>
+      <option value="./assets/fire/eyes/eyes2.png">None</option>
+      <option value="./assets/fire/eyes/eyes3.png">None</option>
     </select>
     <br><br>
     <label for="image-select6"></label>
     <select id="image-select6">
-      <option value="">None</option>    
+      <option value="./assets/fire/mou/mouth1.png">None</option>
+      <option value="./assets/fire/mou/mouth1.png">None</option>
+      <option value="./assets/fire/mou/mouth1.png">None</option>
+    </select>
+    <br><br>
+    <label for="image-select7"></label>
+    <select id="image-select7">
+      <option value="./assets/fire/neck/necklace1.png">None</option>
+      <option value="./assets/fire/neck/necklace2.png">None</option>
     </select>
     <br><br>
     <div id="container">
@@ -159,58 +186,79 @@
       var select5 = document.getElementById("image-select5");
       var select4 = document.getElementById("image-select4");
       var select6 = document.getElementById("image-select6");
-      var image = new Image();
+      var select7 = document.getElementById("image-select7");
+
+      function drawImage(canvas, ctx, src, callback) {
+        var image = new Image();
+        image.onload = function() {
+            ctx.drawImage(image, 0, 0, 400, 400);
+            if (callback) {
+            callback();
+            }
+        };
+        image.src = src;
+        }
+
+        select3.addEventListener("change", function() {
+            var src = this.value;
+            drawImage(canvas1, ctx1, src, function() {
+                select1.dispatchEvent(new Event("change"));
+            });
+        });
+
+        select1.addEventListener("change", function() {
+            var src = this.value;
+            drawImage(canvas1, ctx1, src, function() {
+                select2.dispatchEvent(new Event("change"));
+            });
+        });
+
+        select2.addEventListener("change", function() {
+            var src = this.value;
+            drawImage(canvas1, ctx1, src, function() {
+                select5.dispatchEvent(new Event("change"));
+            });
+        });
+
+        select5.addEventListener("change", function() {
+            var src = this.value;
+            drawImage(canvas1, ctx1, src, function() {
+                select4.dispatchEvent(new Event("change"));
+            });
+        });
+
+        select4.addEventListener("change", function() {
+            var src = this.value;
+            drawImage(canvas1, ctx1, src, function() {
+                select6.dispatchEvent(new Event("change"));
+            });
+        });
+
+        select6.addEventListener("change", function() {
+            var src = this.value;
+            drawImage(canvas1, ctx1, src, function() {
+                select7.dispatchEvent(new Event("change"));
+            });
+        });
+
+        select7.addEventListener("change", function() {
+            var src = this.value;
+            drawImage(canvas1, ctx1, src, function() {
+                // all images have been loaded and drawn
+            });
+        });
 
 
-      function drawImage(canvas, ctx, src) {
-     var image = new Image();
-      image.src = src;
-      image.onload = function() {
-      ctx.drawImage(image, 0, 0, 400, 400);
-    };
-  }
-
-  select3.addEventListener("change", function() {
-    var src = this.value;
-    ctx1.clearRect(0, 0, 400, 400);
-    drawImage(canvas1, ctx1, src);
-  });
-  select1.addEventListener("change", function() {
-    var src = this.value;
-    ctx1.clearRect(0, 0, 400, 400);
-    drawImage(canvas1, ctx1, src);
-  });
-  select2.addEventListener("change", function() {
-    var src = this.value;
-    ctx1.clearRect(0, 0, 400, 400);
-    drawImage(canvas1, ctx1, src);
-  });
-  select5.addEventListener("change", function() {
-    var src = this.value;
-    ctx1.clearRect(0, 0, 400, 400);
-    drawImage(canvas1, ctx1, src);
-  });
-  select4.addEventListener("change", function() {
-    var src = this.value;
-    ctx1.clearRect(0, 0, 400, 400);
-    drawImage(canvas1, ctx1, src);
-  });
-  select6.addEventListener("change", function() {
-    var src = this.value;
-    ctx1.clearRect(0, 0, 400, 400);
-    drawImage(canvas1, ctx1, src);
-  });
-
-
-  drawImage(canvas1, ctx1, select3.value);
-  drawImage(canvas1, ctx1, select1.value);
-  drawImage(canvas1, ctx1, select2.value);
-  drawImage(canvas1, ctx1, select5.value);
-  drawImage(canvas1, ctx1, select4.value);
-  drawImage(canvas1, ctx1, select6.value);
-
+//   drawImage(canvas1, ctx1, select3.value);
+//   drawImage(canvas1, ctx1, select1.value);
+//   drawImage(canvas1, ctx1, select2.value);
+//   drawImage(canvas1, ctx1, select5.value);
+//   drawImage(canvas1, ctx1, select4.value);
+//   drawImage(canvas1, ctx1, select6.value);
+//   drawImage(canvas1, ctx1, select7.value);
 
   function randomizeSelect(select) {
+  ctx1.clearRect(0, 0, 400, 400);
   var options = select.options;
   var randomIndex = Math.floor(Math.random() * options.length);
   select.selectedIndex = randomIndex;
@@ -224,7 +272,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var select5 = document.getElementById("image-select5");
   var select4 = document.getElementById("image-select4");
   var select6 = document.getElementById("image-select6");
- 
+  var select7 = document.getElementById("image-select7");
 
   document.getElementById("randomize").addEventListener("click", function() {
     randomizeSelect(select3);
@@ -233,7 +281,9 @@ document.addEventListener("DOMContentLoaded", function() {
     randomizeSelect(select5);
     randomizeSelect(select4);
     randomizeSelect(select6);
+    randomizeSelect(select7);
     document.getElementById("randomize").style.display = "none"
+    document.getElementById("canvas1").style.display = "block"
   });
 });
 </script>
