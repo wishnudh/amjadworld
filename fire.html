@@ -249,13 +249,16 @@
             });
         });
 
-  function randomizeSelect(select) {
-  ctx1.clearRect(0, 0, 400, 400);
-  var options = select.options;
-  var randomIndex = Math.floor(Math.random() * options.length);
-  select.selectedIndex = randomIndex;
-  select.dispatchEvent(new Event("change"));
-}
+        function randomizeSelect(select, callback) {
+          var options = select.options;
+          var randomIndex = Math.floor(Math.random() * options.length);
+          select.selectedIndex = randomIndex;
+          select.dispatchEvent(new Event("change"));
+          if (callback) {
+            // Wait for the change event to complete before calling the callback
+            setTimeout(callback, 0);
+          }
+        }
 
 document.addEventListener("DOMContentLoaded", function() {
   var select3 = document.getElementById("image-select3");
@@ -267,13 +270,20 @@ document.addEventListener("DOMContentLoaded", function() {
   var select7 = document.getElementById("image-select7");
 
   document.getElementById("randomize").addEventListener("click", function() {
-    randomizeSelect(select3);
-    randomizeSelect(select1);
-    randomizeSelect(select2);
-    randomizeSelect(select5);
-    randomizeSelect(select4);
-    randomizeSelect(select6);
-    randomizeSelect(select7);
+    ctx1.clearRect(0, 0, 400, 400);
+    randomizeSelect(select3, function() {
+      randomizeSelect(select1, function() {
+        randomizeSelect(select2, function() {
+          randomizeSelect(select5, function() {
+            randomizeSelect(select4, function() {
+              randomizeSelect(select6, function() {
+                randomizeSelect(select7);
+              });
+            });
+          });
+        });
+      });
+    });
     document.getElementById("randomize").style.display = "none"
     document.getElementById("canvas1").style.display = "block"
   });
