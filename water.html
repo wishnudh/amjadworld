@@ -294,16 +294,12 @@
     document.getElementById("randomize").addEventListener("click", function() {
     ctx1.clearRect(0, 0, 400, 400);
     randomizeSelect(select3, function() {
-      randomizeSelect(select1, function() {
         randomizeSelect(select2, function() {
-          randomizeSelect(select5, function() {
             randomizeSelect(select4, function() {
               randomizeSelect(select6, function() {
                 randomizeSelect(select7);
               });
             });
-          });
-        });
       });
     });
     document.getElementById("randomize").style.display = "none"
