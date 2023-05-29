@@ -18,7 +18,6 @@ const Home = () => {
           <br></br>
           Walk With Us To The Moon
         </p>
-
       </div>
     </div>
   );
