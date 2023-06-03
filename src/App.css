@@ -76,6 +76,8 @@ nav {
   position: relative;
   display: flex;
   padding-top: 3rem;
+  flex-wrap: nowrap;
+  justify-content: center;
 }
 .home-bannerImage-container {
   position: absolute;
